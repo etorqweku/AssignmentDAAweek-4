@@ -1,16 +1,26 @@
 #include <iostream>
 
 using namespace std;
-void bubbleSort(int arr[],int siz_e)
-{ for (int j=0;j<siz_e-1;j++){
-    for (int i=0;i<siz_e-j-1;i++){
-        if (arr[i]>arr[i+1]){
-            int temp = arr[i];
-            arr[i]= arr[i+1];
-            arr[i+1] = temp;
-        }
-    }
+void fnswap(int *xp,int *yp)
+{
+    int temp = *xp;
+    *xp=*yp;
+    *yp=temp;
 }
+void selectionSort(int arr[],int n)
+{
+    int i , j,min_idx;
+    for(i=0;i<n-1;i++)
+        {
+        min_idx = i;
+        for(j=i+1;j<n;j++){
+            if(arr[j]<arr[min_idx])
+                min_idx=j;
+            }
+        fnswap(&arr[min_idx],&arr[i]);
+
+
+        }
 }
 void printArray(int arr[],int siz_e)
 {
@@ -18,10 +28,9 @@ void printArray(int arr[],int siz_e)
     for (i=0;i<siz_e;i++)
         cout<<arr[i]<<" "<<endl;
 }
-
 int main()
 {
-     cout<<"################################~BUBBLE SORT~#####################################"<<endl;
+    cout<<"################################~SELECTION SORT~#####################################"<<endl;
     int n;
     cout<< "Enter the size of the array"<<endl;
     cin>>n;
@@ -31,7 +40,7 @@ int main()
         cin >> arr[i];
     }
 
-    bubbleSort(arr,n);
+    selectionSort(arr,n);
     cout <<"Sorted array: \n";
     printArray(arr,n);
 
